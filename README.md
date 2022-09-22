@@ -1,15 +1,15 @@
 # Rails Set up
-$ rails new cat-tinder-backend -d postgresql -T
-$ cd cat-tinder-backend
-$ rails db:create
-$ bundle add rspec-rails
-$ rails generate rspec:install
-Add the remote from your GitHub classroom repository
-Create a default branch (main)
-Make an initial commit to the repository
-$ rails server
-$ rails generate resource Cat name:string age:integer enjoys:text image:text
-$ rails db:migrate
+- $ rails new cat-tinder-backend -d postgresql -T
+- $ cd cat-tinder-backend
+- $ rails db:create
+- $ bundle add rspec-rails
+- $ rails generate rspec:install
+- Add the remote from your GitHub classroom repository
+- Create a default branch (main)
+- Make an initial commit to the repository
+- $ rails server
+- $ rails generate resource Cat name:string age:integer enjoys:text image:text
+- $ rails db:migrate
 
 # Rails Seeds
 ```ruby
@@ -55,20 +55,20 @@ end
 ```
 
 ## Cloning a rails app
--  6969  git clone https://github.com/learn-academy-2022-echo/cat-tinder-backend-garfields-dimensional-parents.git
- 6970  cd cat-tinder-backend-garfields-dimensional-parents
- 6971  git checkout -b api-endpoints
- 6972  bundle
- 6973  rails help
- 6974  rails db:prepare
- 6975  gst
- 6976  code .
+- $ git clone <`code-from-gitHub-repo`>
+- $ cd into the cat tinder backend repo
+- $ git checkout -b api-endpoints
+- $ bundle
+- $ rails help
+- $ rails db:prepare
+- $ gst or git status
+- $ code .
 
 - To get a list of rails commands - $ rails help
 
 -  $ rails db:prepare
-  - short cut to creating, migrating, and seeding a database
-  - a combination of $ rails db:create, $ rails db:migrate, $ rails db:seed
+    - short cut to creating, migrating, and seeding a database
+    - a combination of $ rails db:create, $ rails db:migrate, $ rails db:seed
 
 - INDEX
   - As a developer, I can add an index request spec to my application.
@@ -79,10 +79,11 @@ end
     - Update the index controller
     - See it pass
 
+- CREATE
   - As a developer, I can add a create request spec to my application.
     - Create a test in spec/requests/cats_spec.rb
     - Saw it fail
-    
+
   - As a developer, I can add a create endpoint to my application.
     - Update the create controller
     - See it pass
