@@ -52,5 +52,101 @@ RSpec.describe "Cats", type: :request do
       expect(json[:age]).to eq(4)
 
     end
+     it "can't create a cat without a name" do
+      # params to send with the request
+      cat_params = {
+        cat: {
+          age: 4,
+          enjoys: "borrowing VCRs and not returning them",
+          image: "https://media.vanityfair.com/photos/5e27310def889c00087c7928/2:3/w_887,h_1331,c_limit/taylor-swift-cats.jpg"
+        }
+      }
+
+      # send request
+      post '/cats', params: cat_params
+      
+      expect(response).to have_http_status(422)
+
+      json = JSON.parse(response.body)
+      p json
+      expect(json['name']).to include "can't be blank"
+    end
+    it "can't create a cat without a age" do
+      # params to send with the request
+      cat_params = {
+        cat: {
+          name: "Felcia",
+          enjoys: "borrowing VCRs and not returning them",
+          image: "https://media.vanityfair.com/photos/5e27310def889c00087c7928/2:3/w_887,h_1331,c_limit/taylor-swift-cats.jpg"
+        }
+      }
+
+      # send request
+      post '/cats', params: cat_params
+      
+      expect(response).to have_http_status(422)
+
+      json = JSON.parse(response.body)
+      p json
+      expect(json['age']).to include "can't be blank"
+    end
+    it "can't create a cat without a enjoys" do
+      # params to send with the request
+      cat_params = {
+        cat: {
+          name: "Felcia",
+          age: 2,
+          image: "https://media.vanityfair.com/photos/5e27310def889c00087c7928/2:3/w_887,h_1331,c_limit/taylor-swift-cats.jpg"
+        }
+      }
+
+      # send request
+      post '/cats', params: cat_params
+      
+      expect(response).to have_http_status(422)
+
+      json = JSON.parse(response.body)
+      p json
+      expect(json['enjoys']).to include "can't be blank"
+    end
+    it "can't create a cat without a image" do
+      # params to send with the request
+      cat_params = {
+        cat: {
+          name: "Felcia",
+          age: 2,
+          enjoys: "borrowing VCRs and not returning them"
+        }
+      }
+
+      # send request
+      post '/cats', params: cat_params
+      
+      expect(response).to have_http_status(422)
+
+      json = JSON.parse(response.body)
+      p json
+      expect(json['image']).to include "can't be blank"
+    end
+        it "can't create a cat without a enjoys that is at least 10 charcters long" do
+
+      cat_params = {
+        cat: {
+          name: "Felcia",
+          age: 2,
+          enjoys: "hello",
+          image: "https://media.vanityfair.com/photos/5e27310def889c00087c7928/2:3/w_887,h_1331,c_limit/taylor-swift-cats.jpg"
+        }
+      }
+
+      # send request
+      post '/cats', params: cat_params
+      
+      expect(response).to have_http_status(422)
+
+      json = JSON.parse(response.body)
+      p json
+      expect(json['enjoys']).to include "is too short (minimum is 10 characters)"
+    end
   end
 end
